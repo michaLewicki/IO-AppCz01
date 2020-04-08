@@ -2,6 +2,8 @@ package pl.example.spring.punkty;
 
 import io.vavr.collection.List;
 import org.junit.After;
+import org.junit.Before;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,7 @@ class StudentServiceTest {
 
     @Test
     public void getEmptyList() {
+        this.repository.deleteAll();
         final StudentService service = new StudentService(repository);
         List<Student> students = service.getStudents();
         assertTrue(students.isEmpty());
